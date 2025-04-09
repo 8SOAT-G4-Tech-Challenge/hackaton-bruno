@@ -1,0 +1,24 @@
+meta {
+  name: Generate Token
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{AWS_URL}}/auth
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "username": "jackson-batista",
+    "password": "Senha@123456"
+  }
+  
+}
+
+tests {
+  bru.setEnvVar("ACCESS_TOKEN", res.body.accessToken);
+  bru.setEnvVar("ID_TOKEN", res.body.idToken);
+}
