@@ -1,21 +1,25 @@
 meta {
-  name: Create File
+  name: Notification By User
   type: http
-  seq: 3
+  seq: 8
 }
 
-post {
-  url: {{BASE_URL}}/files/upload
-  body: multipartForm
+get {
+  url: {{BASE_URL}}/files/notification/user
+  body: none
   auth: none
 }
 
 headers {
   Authorization: Bearer {{ID_TOKEN}}
-  x-screenshots-time: 0.33
   ~Authorization: Bearer {{ACCESS_TOKEN}}
 }
 
 body:multipart-form {
   : @file(/Users/jacksonantunes/Downloads/SampleVideo_640x360_5mb.mp4)
+}
+
+tests {
+  bru.setEnvVar("NOTIF_ID", res.body[0].id);
+  
 }

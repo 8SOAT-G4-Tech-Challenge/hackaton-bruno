@@ -1,21 +1,25 @@
 meta {
-  name: Create File
+  name: Files By User
   type: http
-  seq: 3
+  seq: 5
 }
 
-post {
-  url: {{BASE_URL}}/files/upload
-  body: multipartForm
+get {
+  url: {{BASE_URL}}/files/user
+  body: none
   auth: none
 }
 
 headers {
   Authorization: Bearer {{ID_TOKEN}}
-  x-screenshots-time: 0.33
   ~Authorization: Bearer {{ACCESS_TOKEN}}
 }
 
 body:multipart-form {
   : @file(/Users/jacksonantunes/Downloads/SampleVideo_640x360_5mb.mp4)
+}
+
+tests {
+  bru.setEnvVar("FILE_ID", res.body[0].id);
+  
 }

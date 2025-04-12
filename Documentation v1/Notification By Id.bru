@@ -1,18 +1,17 @@
 meta {
-  name: Create File
+  name: Notification By Id
   type: http
-  seq: 3
+  seq: 9
 }
 
-post {
-  url: {{BASE_URL}}/files/upload
-  body: multipartForm
+get {
+  url: {{BASE_URL}}/files/notification/{{NOTIF_ID}}
+  body: none
   auth: none
 }
 
 headers {
   Authorization: Bearer {{ID_TOKEN}}
-  x-screenshots-time: 0.33
   ~Authorization: Bearer {{ACCESS_TOKEN}}
 }
 
