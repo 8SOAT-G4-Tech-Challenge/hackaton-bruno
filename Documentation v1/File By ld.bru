@@ -5,14 +5,14 @@ meta {
 }
 
 delete {
-  url: {{BASE_URL}}/files/{{FILE_ID}}
+  url: {{AWS_URL}}/files/{{FILE_ID}}
   body: none
   auth: none
 }
 
 headers {
-  Authorization: Bearer {{ID_TOKEN}}
-  ~Authorization: Bearer {{ACCESS_TOKEN}}
+  Authorization: Bearer {{ACCESS_TOKEN}}
+  ~Authorization: Bearer {{ID_TOKEN}}
 }
 
 body:multipart-form {

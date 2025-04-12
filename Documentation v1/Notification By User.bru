@@ -5,14 +5,14 @@ meta {
 }
 
 get {
-  url: {{BASE_URL}}/files/notification/user
+  url: {{AWS_URL}}/files/user/notifications
   body: none
   auth: none
 }
 
 headers {
-  Authorization: Bearer {{ID_TOKEN}}
-  ~Authorization: Bearer {{ACCESS_TOKEN}}
+  Authorization: Bearer {{ACCESS_TOKEN}}
+  ~Authorization: Bearer {{ID_TOKEN}}
 }
 
 body:multipart-form {
@@ -20,6 +20,6 @@ body:multipart-form {
 }
 
 tests {
-  bru.setEnvVar("NOTIF_ID", res.body[0].id);
+  bru.setEnvVar("NOTIF_ID", res.body[0]?.id);
   
 }

@@ -5,14 +5,14 @@ meta {
 }
 
 get {
-  url: {{BASE_URL}}/files/user
+  url: {{AWS_URL}}/files/user/files
   body: none
   auth: none
 }
 
 headers {
-  Authorization: Bearer {{ID_TOKEN}}
-  ~Authorization: Bearer {{ACCESS_TOKEN}}
+  Authorization: Bearer {{ACCESS_TOKEN}}
+  ~Authorization: Bearer {{ID_TOKEN}}
 }
 
 body:multipart-form {
@@ -20,6 +20,6 @@ body:multipart-form {
 }
 
 tests {
-  bru.setEnvVar("FILE_ID", res.body[0].id);
+  bru.setEnvVar("FILE_ID", res.body[0]?.id);
   
 }
